@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-
-const inter = Inter({ subsets: ["cyrillic-ext"] });
+import StickyFooter from "../components/StickyFooter";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../theme";
 
 export const metadata: Metadata = {
   title: "OpenWeatherApi",
@@ -18,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppRouterCacheProvider>
-          {children}
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            {children}
+            <StickyFooter/>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
