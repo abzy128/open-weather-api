@@ -1,15 +1,15 @@
 import { getApiDocs } from "@/app/lib/swagger";
 import ReactSwagger from "./react-swagger";
-import { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "API Docs",
-  description: "API Docs",
-};
+import { ThemeProvider } from "@mui/material";
+import { lightModeTheme } from "@/themes";
+
 export default async function Page() {
   const spec = await getApiDocs();
   return (
-    <section className="container">
-      <ReactSwagger spec={spec} />
-    </section>
+    <main className="items-center justify-between p-24 pt-2">
+      <section className="container">
+        <ReactSwagger spec={spec} />
+      </section>
+    </main>
   );
 }
